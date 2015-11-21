@@ -1,0 +1,32 @@
+input { 
+   file{
+   	path => "/scylla/stats/cross_pinger.txt"
+	type => "cross_pinger"
+	start_position => "beginning"
+	sincedb_path => "/scylla/stats/sincedb/cross_pinger"
+  }
+}
+filter {
+	if[type] == "cross_pinger" {
+		grok {
+			match => { "message" => "%{INT:timestamp_unix}[\s]+%{NUMBER:status:int}[\s]+%{NUMBER:time:float}" }
+			match => { "message" => "%{INT:timestamp_unix}[\s]+%{NUMBER:status:int}" }
+		}
+		date {
+			match => [ "timestamp_unix", "UNIX" ]	
+		}
+	}
+}
+output {
+	if[type] == "cross_pinger" {
+		elasticsearch { 
+			host => "host:9200"
+			protocol => "http"  
+                        sniffing => true
+			cluster => "scylla_elasticsearch"
+			document_id => "cross_ping_%{host}_%{timestamp_unix}"
+			document_type => "cross_ping"
+  		}	
+	}
+  #stdout { codec => rubydebug  }
+}

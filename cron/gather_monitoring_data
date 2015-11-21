@@ -1,0 +1,7 @@
+* * * * * bash monitors/run_drive_temp.sh >> /scylla/stats/hdd_temp_stats.txt
+* * * * * ruby monitors/pinger.rb >> /scylla/stats/pinger.txt
+* * * * * ruby monitors/cross_pinger.rb >> /scylla/stats/cross_pinger.txt
+* * * * * ruby monitors/free.rb >> /scylla/stats/free.txt
+* * * * * ruby monitors/df.rb >> /scylla/stats/df.txt
+* * * * * ruby monitors/top.rb >> /scylla/stats/top.txt
+* * * * * ruby monitors/sys_temp.rb >> /scylla/stats/sys_temp.txt

@@ -1,0 +1,6 @@
+{
+  "port": 8000,
+  "pinger_path": "/tmp/dat",
+  "HDD_temp_path": "/tmp/hdd_temp_stats.txt",
+  "stats_path": "/tmp/stats.txt"
+}
