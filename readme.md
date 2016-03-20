@@ -1,5 +1,7 @@
 # Smart home
 
+![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)
+
 This project tries to make simple system for smarter home.
 It is based on some monitors which should be used as sources for ML system
 based on gathered data.
