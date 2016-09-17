@@ -14,7 +14,7 @@ type Config struct {
 
 func get_config() *Config {
   conf := Config{}
-  conf_file, err := ioutil.ReadFile("conf.json")
+  conf_file, err := ioutil.ReadFile("/config/conf.json")
   err = json.Unmarshal(conf_file, &conf)
 
   if err != nil {
